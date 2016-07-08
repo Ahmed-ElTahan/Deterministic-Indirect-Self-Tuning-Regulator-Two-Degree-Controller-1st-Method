@@ -2,15 +2,15 @@
 
         It's intended to apply the self-tuning regulator for a given system
     such as 
-                                            y         z^(-d) Bsys
+                                       y         z^(-d) Bsys
                                 Gp = ------ = ----------------------
-                                            u               Asys
+                                     u               Asys
 
     the controller is given in the form of 
                                     
-                                         T             S 
+                                     T             S 
                                 u = ------ uc - ------ y = L1 - L2
-                                        R             R
+                                     R             R
 
     the closed loop transfer function
            y          z^(-d)BsysT                          z^(-d)BsysT           z^(-d)BsysT

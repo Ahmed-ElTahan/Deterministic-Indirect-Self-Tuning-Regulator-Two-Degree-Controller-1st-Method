@@ -1,6 +1,6 @@
 # Deterministic-Indirect-Self-Tuning-Regulator-Two-Degree-Controller-1st-Method
 
-    It's intended to apply the self-tuning regulator for a given system
+        It's intended to apply the self-tuning regulator for a given system
     such as 
                                             y         z^(-d) Bsys
                                 Gp = ------ = ----------------------
@@ -13,9 +13,9 @@
                                         R             R
 
     the closed loop transfer function
-           y                 z^(-d)BsysT                    z^(-d)BsysT        z^(-d)BsysT
+           y          z^(-d)BsysT                          z^(-d)BsysT           z^(-d)BsysT
         ------ = ---------------------------------- =  -------------------  = -------------------
-          uc        AsysR + z^(-d)BsysS               Am A0                  alpha
+          uc        AsysR + z^(-d)BsysS                     Am A0                 alpha
 
 where 
 -- y : output of the system
@@ -27,7 +27,7 @@ where
 -- R = 1 + r_1 z^-1 + r_2 z^-1 + ... + r_nr z^(-nr) --> [1,  r_1,  r_2,  r_3,  ..., r_nr] 
 -- S = s_0 + s_1 z^-1 + s_2 z^-1 + ... + s_ns z^(-ns) --> [s_0,  s_1, s _2,  s_3,  ..., s_ns] 
 -- T : another choice that to affect the close loop zeros and it's determined based 
-        on several ways. Here use T = z^(-n)/B, n >=d, choose n = d
+        on several ways. Here use T = A0
 -- d : delay in the system. Notice that this form of the Diaphontaing solution
         is available for systems with d>=1
 -- Am = required polynomial of the model = 1+m_1 z^-1 + m_2 z^-1 + ... + m_nm z^(-m_nm)
@@ -39,12 +39,12 @@ Steps of solution:
 2- assume at first the controllers are unity. Get u, y of the system
 3- RLS and get A, B estimated for the system. 
 4- Solve the Diophantine equation using A, B and the specified "alpha = AmA0" and get S, R of the controller.
-5- choose T = z^(-n)/B, n >=d, choose n = d
+5- choose T = A0
 5- find "u" due to this new controller and then "y"
                                     
-                                         T             S 
+                                      T           S 
                                 u = ------ uc - ------ y
-                                        R             R
+                                      R           R
 
 6- repeat from 3 till the system converges.
 
@@ -64,7 +64,6 @@ Gz_estm : estimated pulse transfer function
 Gc1: first controller S/R
 Gc2: second controller T/R
 Gcl = closed loop transfer function 
-
 
 Note: in order to acheive the dc gain which is the y_ss/uc_ss we may use
 here T = T/dc_gain
